@@ -16,7 +16,16 @@ TEST_CASE("text length < word length"){
     
 }
 
-TEST_CASE(""){
+TEST_CASE("not a valid word"){
      string text = "aba ba";
-    CHECK(find(text,"aba baba"))
+    CHECK_THROWS_WITH(find(text,""), "empty word");
+    CHECK_THROWS_WITH(find(text,"ab1 ba"), "word isn't valid");
+    CHECK_THROWS_WITH(find(text,"ab% ba"), "word isn't valid");
+    CHECK_THROWS_WITH(find(text,"ab_ ba"), "word isn't valid");
+    CHECK_THROWS_WITH(find(text,"aba ba^"), "word isn't valid");
+    CHECK_THROWS_WITH(find(text,"ab- ba"), "word isn't valid");
+    CHECK_THROWS_WITH(find(text,"ab! ba"), "word isn't valid");
+    CHECK_THROWS_WITH(find(text,"ab() ba"), "word isn't valid");
+    CHECK_THROWS_WITH(find(text,"ab& ba"), "word isn't valid");
 }
+TEST_CASE("")
