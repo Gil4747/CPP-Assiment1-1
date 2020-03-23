@@ -56,7 +56,7 @@ TEST_CASE("word is a text substring but with one letter or more added"){
       CHECK_THROWS_WITH(find(text,"allright"), "Word isn't a part of the text");
       CHECK_THROWS_WITH(find(text,"dontthink"), "Word isn't a part of the text");
       CHECK_THROWS_WITH(find(text,"itsalright"), "Word isn't a part of the text");
-    {
+}
         
 TEST_CASE("valid word with switched letters"){
      string text = "God is great";
