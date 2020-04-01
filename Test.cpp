@@ -16,46 +16,47 @@ TEST_CASE("text length < word length"){
     
 }
 
-TEST_CASE("not a valid word"){
-     string text = "abba";
-    CHECK_THROWS_WITH(find(text,""), "word isn't valid");
-     CHECK_THROWS_WITH(find(text,"  "), "word isn't valid");
-    CHECK_THROWS_WITH(find(text,"ab1ba"), "word isn't valid");
-    CHECK_THROWS_WITH(find(text,"ab%ba"), "word isn't valid");
-    CHECK_THROWS_WITH(find(text,"ab_ba"), "word isn't valid");
-    CHECK_THROWS_WITH(find(text,"aba^"), "word isn't valid");
-    CHECK_THROWS_WITH(find(text,"ab-ba"), "word isn't valid");
-    CHECK_THROWS_WITH(find(text,"ab!ba"), "word isn't valid");
-    CHECK_THROWS_WITH(find(text,"ab(ba"), "word isn't valid");
-    CHECK_THROWS_WITH(find(text,"ab&ba"), "word isn't valid");
-    CHECK_THROWS_WITH(find(text,"ab.ba"), "word isn't valid");
-     CHECK_THROWS_WITH(find(text,"ab=ba"), "word isn't valid");
-      CHECK_THROWS_WITH(find(text,"ab_ba"), "word isn't valid");
-       CHECK_THROWS_WITH(find(text,"ab$ba"), "word isn't valid");
-        CHECK_THROWS_WITH(find(text,"ab@ba"), "word isn't valid");
-        CHECK_THROWS_WITH(find(text,"ab[ba"), "word isn't valid");
-         CHECK_THROWS_WITH(find(text,"ab*ba"), "word isn't valid");
-         CHECK_THROWS_WITH(find(text,"ab/ba"), "word isn't valid");
-          CHECK_THROWS_WITH(find(text,"ab~ba"), "word isn't valid");
-            CHECK_THROWS_WITH(find(text,"ab;ba"), "word isn't valid");
+TEST_CASE("Word isn't part of the text"){
+     string text = "abbas sad aas";
+    CHECK_THROWS_WITH(find(text,""), "Empty word");
+     CHECK_THROWS_WITH(find(text,"  "), "Word isn't part of the text");
+    CHECK_THROWS_WITH(find(text,"ab1ba"), "Word isn't part of the text");
+    CHECK_THROWS_WITH(find(text,"ab%ba"), "Word isn't part of the text");
+    CHECK_THROWS_WITH(find(text,"ab_ba"), "Word isn't part of the text");
+    CHECK_THROWS_WITH(find(text,"aba^"), "Word isn't part of the text");
+    CHECK_THROWS_WITH(find(text,"ab-ba"), "Word isn't part of the text");
+    CHECK_THROWS_WITH(find(text,"ab!ba"), "Word isn't part of the text");
+    CHECK_THROWS_WITH(find(text,"ab(ba"), "Word isn't part of the text");
+    CHECK_THROWS_WITH(find(text,"ab&ba"), "Word isn't part of the text");
+    CHECK_THROWS_WITH(find(text,"ab.ba"), "Word isn't part of the text");
+     CHECK_THROWS_WITH(find(text,"ab=ba"), "Word isn't part of the text");
+      CHECK_THROWS_WITH(find(text,"ab_ba"), "Word isn't part of the text");
+       CHECK_THROWS_WITH(find(text,"ab$ba"), "Word isn't part of the text");
+        CHECK_THROWS_WITH(find(text,"ab@ba"), "Word isn't part of the text");
+        CHECK_THROWS_WITH(find(text,"ab[ba"), "Word isn't part of the text");
+         CHECK_THROWS_WITH(find(text,"ab*ba"), "Word isn't part of the text");
+         CHECK_THROWS_WITH(find(text,"ab/ba"), "Word isn't part of the text");
+          CHECK_THROWS_WITH(find(text,"ab~ba"), "Word isn't part of the text");
+            CHECK_THROWS_WITH(find(text,"ab;ba"), "Word isn't part of the text");
 }
 
 TEST_CASE("word is almost a text substring but missing one letter or more"){
     string text="the times they are a changin";
-     CHECK_THROWS_WITH(find(text,"tims"), "Word isn't a part of the text");
-     CHECK_THROWS_WITH(find(text,"hey"), "Word isn't a part of the text");
-     CHECK_THROWS_WITH(find(text,"chanin"), "Word isn't a part of the text");
-     CHECK_THROWS_WITH(find(text, "he"), "Word isn't a part of the text");
+     CHECK_THROWS_WITH(find(text,"tims"), "Word isn't part of the text");
+     CHECK_THROWS_WITH(find(text,"hey"), "Word isn't part of the text");
+     CHECK_THROWS_WITH(find(text,"chanin"), "Word isn't part of the text");
+     CHECK_THROWS_WITH(find(text, "he"), "Word isn't part of the text");
 }
 
 TEST_CASE("word is a text substring but with one letter or more added"){
     string text="Dont think twice its alright";
-      CHECK_THROWS_WITH(find(text, "dontt"), "Word isn't a part of the text");
-      CHECK_THROWS_WITH(find(text,"tthink"), "Word isn't a part of the text");
-      CHECK_THROWS_WITH(find(text,"twwice"), "Word isn't a part of the text");
-      CHECK_THROWS_WITH(find(text,"allright"), "Word isn't a part of the text");
-      CHECK_THROWS_WITH(find(text,"dontthink"), "Word isn't a part of the text");
-      CHECK_THROWS_WITH(find(text,"itsalright"), "Word isn't a part of the text");
+      CHECK_THROWS_WITH(find(text,"itsalright"), "Word isn't part of the text");
+      CHECK_THROWS_WITH(find(text, "dontt"), "Word isn't part of the text");
+      CHECK_THROWS_WITH(find(text,"tthink"), "Word isn't part of the text");
+      CHECK_THROWS_WITH(find(text,"twwice"), "Word isn't part of the text");
+      CHECK_THROWS_WITH(find(text,"allright"), "Word isn't part of the text");
+      CHECK_THROWS_WITH(find(text,"dontthink"), "Word isn't part of the text");
+     
 }
         
 TEST_CASE("valid word with switched letters"){
@@ -98,7 +99,7 @@ TEST_CASE("valid word with switched letters"){
      CHECK(find(text,"grEAT")==string("great"));
      CHECK(find(text,"gREAT")==string("great"));
      CHECK(find(text,"grEAt")==string("great"));
-     CHECK(find(text,"gREATt")==string("great"));
+     CHECK(find(text,"gREAT")==string("great"));
      CHECK(find(text,"Jreat")==string("great"));
      CHECK(find(text,"jreat")==string("great"));
      CHECK(find(text,"JReat")==string("great"));

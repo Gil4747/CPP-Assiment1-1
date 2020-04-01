@@ -2,26 +2,136 @@
 #include <stdexcept>
 #include "PhoneticFinder.hpp"
 #include<bits/stdc++.h> 
+#include <stdbool.h>
+
 using namespace std;
 
-// bool equal(char a,char b){
-//     switch (a)
-//     case v: if(b)
-// }
+ bool equal(char fir,char sec){
 
-string phonetic::find(string text,string word)
-{
+    if(fir==sec){
+       return true;
+  }
+    else if (fir=='w' || fir=='v'){
+    if(sec=='w' || sec=='v'){
+       return true;
+    }
+}
 
-     transform(text.begin(), text.end(), text.begin(), ::tolower);
-     transform(word.begin(), word.end(), word.begin(), ::tolower);
+    else if (fir=='b' || fir=='f' || fir=='p'){
+    if(sec=='b' || sec=='f' || sec=='p'){
+     return true;
+    }
+ }
 
-    //  if(text.length()<word.length())
-      //throw "word length too long";
+    else if (fir=='g' || fir=='j'){
+    if(sec=='g' || sec=='j'){
+     return true;
+   }
+  }
 
-    // int i=0,j=0;
+   else if(fir=='c' || fir=='k' || fir=='q'){ 
+    if(sec=='c' || sec=='k' || sec=='q'){
+     return true;
+    }
+   }
 
-// while(i<text.length()){
+    else if(fir=='s' || fir=='z'){ 
+    if(sec=='s' || sec=='z'){
+     return true;
+    }
+    }
+
+    else if(fir=='d' || fir=='t'){ 
+    if(sec=='d' || sec=='t'){
+     return true;
+    }
+    }
+
+    else if(fir=='o' || fir=='u'){ 
+    if(sec=='o' || sec=='u'){
+     return true;
+    }
+    }
+
+    else if(fir=='i' || fir=='y'){ 
+    if(sec=='i' || sec=='y'){
+     return true;
+    }
+    }
+
+    return false;
+}
+
+ bool isEquals(string textw,string word){
+   int i=0;
+   for(auto x : textw){
+     if(!equal(x,word.at(i))){
+       return false;
+     }
+     i++;
+   }
+   return true;
+}
+
+
+
+string phonetic::find(string text,string word){
+
+  if(text.length()<word.length()){
+      throw logic_error{"word length too long"};
+     }
+
+     if(word.length()==0){
+      throw logic_error{"Empty word"};
+     }
+
+     string strt=text;
+     string strw=word;
+     string temp;
     
-// }
-return "b";
+     transform(strt.begin(), strt.end(), strt.begin(), ::tolower);
+     transform(strw.begin(), strw.end(), strw.begin(), ::tolower);
+
+    int count=0,pos=0;
+    int size=strw.length();
+
+      for (auto x : strt) 
+   { 
+       if (x == ' ' || pos==strt.length()-1){
+         
+           if(isEquals(temp,strw)){
+            if(pos==count){
+              if(size==count){
+              return text.substr(pos-size,size);
+              }
+              else
+              {
+                temp = temp + x; 
+                count++; 
+                pos++;
+              }
+            }
+
+            else if(pos==strt.length()-1){
+              if(size==count){
+               return text.substr(pos+1-size,size);
+              }
+             }
+
+            else if(size==count-1)
+             return text.substr(pos-size,size);
+           }
+          
+           count=0; 
+           temp = "";  
+  }
+       else
+
+       temp = temp + x; 
+       count++; 
+       pos++;
+   
+   }
+
+throw logic_error{"Word isn't part of the text"};
 }
