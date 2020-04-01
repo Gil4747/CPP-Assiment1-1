@@ -60,7 +60,8 @@ TEST_CASE("word is a text substring but with one letter or more added"){
 }
         
 TEST_CASE("valid word with switched letters"){
-     string text = "God is great";
+     string text = "God is great and aba k";
+     CHECK(find(text,"q")==string("k"));
      CHECK(find(text,"god")==string("God"));
      CHECK(find(text,"God")==string("God"));
      CHECK(find(text,"jud")==string("God"));
@@ -137,4 +138,8 @@ TEST_CASE("valid word with switched letters"){
      CHECK(find(text,"Yz")==string("is"));
      CHECK(find(text,"yZ")==string("is"));
      CHECK(find(text,"IZ")==string("is"));
+}
+TEST_CASE("valid word with switched letters"){
+  string text="hello";
+  CHECK(find(text,"HELLO")==string("hello"));
 }

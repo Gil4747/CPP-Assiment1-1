@@ -81,7 +81,7 @@ string phonetic::find(string text,string word){
       throw logic_error{"word length too long"};
      }
 
-     if(word.length()==0){
+     if(word.length()==0 || word==" "){
       throw logic_error{"Empty word"};
      }
 
@@ -94,6 +94,12 @@ string phonetic::find(string text,string word){
 
     int count=0,pos=0;
     int size=strw.length();
+
+ if(text.length()==word.length()){
+      if(isEquals(temp,strw))
+      return text;
+      throw logic_error{"Word isn't part of the text"};
+    }
 
       for (auto x : strt) 
    { 
