@@ -140,6 +140,6 @@ TEST_CASE("valid word with switched letters"){
      CHECK(find(text,"IZ")==string("is"));
 }
 TEST_CASE("valid word with switched letters"){
-  string text="hello";
+  string text=" hello";
   CHECK(find(text,"HELLO")==string("hello"));
 }
