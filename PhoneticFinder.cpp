@@ -76,30 +76,20 @@ using namespace std;
 
 
 string phonetic::find(string text,string word){
-int count=0,pos=0;
-
-while(pos<text.length()){
-  if(text.at(0)==' '){
-    text=text.substr(1);
-  }
-   else if(text.at(pos)==' ' && count==0){
-     count++;
-   }
-   else if(text.at(pos)==' ' && count>0){
-     text=text.substr(0,pos-1)+text.substr(pos+1);
-     count=0;
-     pos--;
-   }
-   pos++;
-}
-
-count=0,pos=0;
-  if(text.length()<word.length()){
-      throw logic_error{"word length too long"};
+  
+  if(word.length()==0 || word==" "){
+      throw logic_error{"Empty word"};
      }
 
-     if(word.length()==0 || word==" "){
-      throw logic_error{"Empty word"};
+  while(text.at(0)==' '){
+    text=text.substr(1);
+  }
+  while(word.at(0)==' '){
+    word=word.substr(1);
+  }
+
+  if(text.length()<word.length()){
+      throw logic_error{"word length too long"};
      }
 
      string strt=text;
@@ -109,6 +99,7 @@ count=0,pos=0;
      transform(strt.begin(), strt.end(), strt.begin(), ::tolower);
      transform(strw.begin(), strw.end(), strw.begin(), ::tolower);
 
+    int count=0,pos=0;
     int size=strw.length();
 
  if(text.length()==word.length()){
@@ -122,7 +113,6 @@ count=0,pos=0;
        if (x == ' ' || pos==strt.length()-1){
          
            if(isEquals(temp,strw)){
-            
             if(pos==count){
               if(size==count){
               return text.substr(pos-size,size);
@@ -141,19 +131,19 @@ count=0,pos=0;
               }
              }
 
-            else if(size==count-1){
+            else if(size==count-1)
              return text.substr(pos-size,size);
-            }
            }
           
            count=0; 
            temp = "";  
   }
        else
+
        temp = temp + x; 
        count++; 
        pos++;
-      
+   
    }
 
 throw logic_error{"Word isn't part of the text"};
