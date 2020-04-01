@@ -96,7 +96,7 @@ string phonetic::find(string text,string word){
     int size=strw.length();
 
  if(text.length()==word.length()){
-      if(isEquals(temp,strw))
+      if(isEquals(text,strw))
       return text;
       throw logic_error{"Word isn't part of the text"};
     }
