@@ -111,19 +111,13 @@ string phonetic::find(string text,string word){
       for (auto x : strt) 
    { 
        if (x == ' ' || pos==strt.length()-1){
-         
            if(isEquals(temp,strw)){
             if(pos==count){
               if(size==count){
               return text.substr(pos-size,size);
               }
-              else
-              {
-                temp = temp + x; 
-                count++; 
-                pos++;
-             }
-            }
+
+           }
 
             else if(pos==strt.length()-1){
               if(size==count){
@@ -131,17 +125,17 @@ string phonetic::find(string text,string word){
               }
              }
 
-            else if(size==count-1)
+            else if(size==count-1){
              return text.substr(pos-size,size);
+            }
            }
           
            count=0; 
            temp = "";  
   }
        else
-
        temp = temp + x; 
-       count++; 
+       count++;
        pos++;
    
    }
