@@ -19,7 +19,6 @@ TEST_CASE("text length < word length"){
 TEST_CASE("Word isn't part of the text"){
      string text = "abbas sad aas";
     CHECK_THROWS_WITH(find(text,""), "Empty word");
-     CHECK_THROWS_WITH(find(text,"  "), "Word isn't part of the text");
     CHECK_THROWS_WITH(find(text,"ab1ba"), "Word isn't part of the text");
     CHECK_THROWS_WITH(find(text,"ab%ba"), "Word isn't part of the text");
     CHECK_THROWS_WITH(find(text,"ab_ba"), "Word isn't part of the text");
