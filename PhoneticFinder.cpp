@@ -117,9 +117,7 @@ string phonetic::find(string text,string word){
               return text.substr(pos-size,size);
               }
               else
-              {
-                temp = temp + x; 
-                count++; 
+              { 
                 pos++;
              }
            }
